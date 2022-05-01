@@ -7,7 +7,7 @@ class FizzBuzz {
         
     	/*	My approach:
     	 * 		Store each pair of number and word in an hashmap.
-    	 *  	For each key check if the current number i is divisible by that key, if so add the value to the output string.
+    	 *  		For each key check if the current number i is divisible by that key, if so add the value to the output string.
     	 * 		Check if the output string is empty, if it is print i. otherwise print the output string. 
     	 * 
     	 * 		This way adding new rules will be as easy as adding new keys to the hashmap.
