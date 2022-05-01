@@ -10,3 +10,5 @@ write a program that outputs FizzBuzz for the numbers 1 to 100.
 
 ### The catch
 To make the program as elegant, maintainable and future-proofing as possible.
+
+[Solution](FizzBuzz.java)
