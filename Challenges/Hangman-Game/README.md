@@ -39,7 +39,5 @@ The rest of the Readme is the instructions from the project page in Campus IL wr
 קרדיט על הקורס, המשימות וחומרי הלימוד לCampus IL ולמערך הסייבר הלאומי
 
 ## הקוד שלי
-### משימות לאורך הקורס
-המשימות בקורס מחולקות לפי יחידות הלימוד ונמצאות [כאן](/units%20exercise)
 ### משחק איש תלוי בקונסול - פרוייקט גמר
 פרוייקט הגמר נמצא [כאן](hangman%20project.py)
