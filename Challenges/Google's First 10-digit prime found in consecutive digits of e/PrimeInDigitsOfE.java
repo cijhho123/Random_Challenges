@@ -12,7 +12,7 @@ class GoogleBillboardChallenge {
         
     	String eDigits = "";
 		try {
-			eDigits = Files.readString(Path.of("D:\\Users\\cijhho123456\\Desktop\\e.txt"), StandardCharsets.US_ASCII);
+			eDigits = Files.readString(Path.of(args[0]);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
