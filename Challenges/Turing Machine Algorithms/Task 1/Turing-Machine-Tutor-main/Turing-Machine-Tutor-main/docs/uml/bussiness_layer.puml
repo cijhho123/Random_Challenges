@@ -1,0 +1,127 @@
+@startuml
+
+package data_types {
+
+    class TuringMachine <<immutable dataclass>> {
+        + states: readonly_list<State>
+        + input_alphabet: readonly_list<Letter>
+        + tape_alphabet: readonly_list<Letter>
+        + blank_character: Letter
+        + delta: readonly_map<DeltaEntryInput, DeltaEntryOutput>
+        + accepting_state: State
+        + rejecting_state: State
+        + initial_state: State
+        + create_runner(word: Word): TuringMachineRunner
+    }
+
+
+    class DeltaEntryInput <<immutable dataclass>> {
+        + state: State
+        + letter: Letter
+    }
+
+    class DeltaEntryOutput <<immutable dataclass>> {
+        + target_state: State
+        + write_letter: Letter
+        + direction: Direction
+    }
+
+    class Configuration <<immutable dataclass>> {
+        + state: State
+        + tape: readonly_list<Letter>
+        + head_position: int
+    }
+
+    class Undo <<immutable dataclass>> {
+        + direction: Direction
+        + original_letter: Letter
+        + original_state: State
+    }
+
+    note bottom of Undo {
+        **to undo**:
+        0. move direction
+        1. write original_letter
+        2. change to original_state
+    }
+
+    DeltaEntryOutput --[hidden]r-- DeltaEntryInput
+}
+
+package runner {
+    class TuringMachineRunner {
+        - machine: TuringMachine
+        - input_word: Word
+        - tape: list<Letter>
+        - state: State
+        - undo: Stack<Undo>
+        + get_current_configuration(): Configuration
+        + step(): void
+        + run_steps(steps: int | None): void
+        + undo(): void
+        + print(): void
+    }
+}
+
+package testing {
+    abstract class TuringMachineTester {
+        + readonly machine: TuringMachine
+        + test(): TestSuiteResult
+    }
+
+    class PredefinedWordsTester {
+
+    }
+
+    abstract class RandomizedTester {
+        # generate_word(random: Random): Word
+        # is_in_language(word: Word): boolean
+        - amount_positives: int
+        - amount_negatives: int
+        + get_seed(): int
+        + set_seed(seed: int)
+    }
+
+    note top of RandomizedTester {
+        TA implements generate_word()
+        and is_in_language(word: Word)
+    }
+
+    class HybridTester {
+
+    }
+
+    class PredefinedWordTest <<immutable dataclass>> {
+        + word: Word
+        + expected: str
+    }
+
+    PredefinedWordsTester *-l- PredefinedWordTest
+
+    PredefinedWordsTester -u-|> TuringMachineTester
+    RandomizedTester -u-|> TuringMachineTester
+    HybridTester -u-|> TuringMachineTester
+    HybridTester *-r- PredefinedWordTest
+    HybridTester *-l- RandomizedTester
+
+    class TestResult <<immutable dataclass>> {
+        + passed: boolean
+        + expected: boolean
+        + actual: boolean
+        + input: Word
+    }
+
+    class TestSuiteResult <<immutable dataclass>> {
+        + test_amount: int
+        + amount_passed: int
+        + all_passed: boolean
+    }
+
+    TestSuiteResult *-- TestResult
+}
+
+data_types -[hidden]d- testing
+data_types -[hidden]r- runner
+
+
+@enduml
