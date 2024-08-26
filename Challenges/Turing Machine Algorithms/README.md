@@ -14,7 +14,7 @@ a2n_bn -  a^{2n}b^{n} for any natural number n
 
 ## Task 2
 Create a Deterministic Multi-Tape Turing machine that calculate the following functions:   
-IsPalindrom - check if a word is a palindrom
+IsPalindrom - check if a word is a palindrom  
 DivideByTwo -  gets a unary string and returns a unary string of half the length of the input
 LogBaseTwo  - gets a unary string and returns a unary string of length log 2 of the length of the input string
 
