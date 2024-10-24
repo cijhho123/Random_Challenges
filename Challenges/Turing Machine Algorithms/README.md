@@ -9,12 +9,12 @@ The "Turing Machine Tutor" can be found [here](https://github.com/Turing-Machine
 ## Task 1
 Create a Deterministic Turing machine that decide the following languages:  
 wDw - all the words in the form u$u, for any word u  
-successor  - two binary strings w1 and w2 representing naturals n1 and n2 return True if n2=n1+1. Technically, we assume that the strings are given in an interleaved fashion, one bit of the first, one of the second and a delimiter (#)
+successor  - two binary strings w1 and w2 representing naturals n1 and n2 return True if n2=n1+1. Technically, we assume that the strings are given in an interleaved fashion, one bit of the first, one of the second and a delimiter (#)  
 a2n_bn -  a^{2n}b^{n} for any natural number n  
 
 ## Task 2
 Create a Deterministic Multi-Tape Turing machine that calculate the following functions:   
 IsPalindrom - check if a word is a palindrom  
-DivideByTwo -  gets a unary string and returns a unary string of half the length of the input
+DivideByTwo -  gets a unary string and returns a unary string of half the length of the input  
 LogBaseTwo  - gets a unary string and returns a unary string of length log 2 of the length of the input string
 
